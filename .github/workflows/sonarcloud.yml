@@ -32,6 +32,11 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
+      
+      - name: Run tests and generate back report
+        working-directory: back
+        run: mvn -B clean verify
+      
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
