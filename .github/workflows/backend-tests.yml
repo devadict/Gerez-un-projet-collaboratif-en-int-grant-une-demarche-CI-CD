@@ -1,7 +1,7 @@
 name: Back tests & reports
 on:
   workflow_dispatch: {}
-  pull_requests:
+  pull_request:
     branches:
       - main
 
