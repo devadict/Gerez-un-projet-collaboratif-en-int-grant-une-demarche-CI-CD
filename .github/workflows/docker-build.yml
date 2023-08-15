@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build & push Docker image for front
-      uses: docker/build-push-actions@v3
+      uses: docker/build-push-action@v3
       with:
         context: ./front
         file: ./front/Dockerfile
