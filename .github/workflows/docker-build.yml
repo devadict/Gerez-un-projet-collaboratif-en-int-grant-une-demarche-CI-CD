@@ -1,6 +1,7 @@
 name: Build and deploy Docker Images
 
-on: 
+on:
+  workflow_dispatch: {}
   push:
     branches:
       -main
@@ -23,15 +24,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build & push Docker image for front
-      uses: docker/build-push-actions@v2
+      uses: docker/build-push-actions@v3
       with:
+        context: ./front
+        file: ./front/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/bobapp-front:latest
-        context: front
+        tags: devadict/bobapp-front:latest
     
     - name: Build & push Docker image for back
       uses: docker/build-push-action@v3
       with:
         context: ./back
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/bobapp-back:latest
+        tags: devadict/bobapp-back:latest
